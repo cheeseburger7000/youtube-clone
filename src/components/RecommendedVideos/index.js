@@ -3,7 +3,7 @@ import './index.css';
 
 function RecommendedVideos() {
     return (
-        <div>
+        <div className="recommendedVideos">
             RecommendedVideos
         </div>
     )
