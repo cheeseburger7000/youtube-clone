@@ -3,16 +3,36 @@ import './App.css';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import RecommendedVideos from './components/RecommendedVideos';
+import SearchPage from './components/SearchPage';
+// https://reactrouter.com/web/guides/quick-start
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
 function App() {
   return (
     // BEM class naming convention
     <div className="app">
-      <Header />
-      <div className="app__page">
-        <Sidebar />
-        <RecommendedVideos />
-      </div>
+      <Router>
+        <Header />
+
+        <Switch>
+          <Route path="/search/:searchTerm">
+            <div className="search__page">
+              <Sidebar />
+              <SearchPage />
+            </div>
+          </Route>
+          <Route path="/">
+            <div className="app__page">
+              <Sidebar />
+              <RecommendedVideos />
+            </div>
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
